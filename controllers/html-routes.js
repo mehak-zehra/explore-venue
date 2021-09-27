@@ -5,6 +5,14 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 router.get('/search', (req, res) => {
   let myLocation = req.query.location // read value from query parameter
   let filters = {};
