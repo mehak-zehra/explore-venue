@@ -1,0 +1,32 @@
+{
+  "name": "explore-venue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehak-zehra/explore-venue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehak-zehra/explore-venue/issues"
+  },
+  "homepage": "https://github.com/mehak-zehra/explore-venue#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.13",
+    "sequelize": "^6.6.5"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1"
+  }
+}

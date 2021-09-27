@@ -1,0 +1,77 @@
+<header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="/">
+                <h3>Explore Venue</h3>
+            </a>
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Location</label>
+            <select id="location-filter" class="selectpicker" multiple data-live-search="true" onchange="updateLocationFilter()">
+                <option>San Francisco</option>
+                <option>Fremont</option>
+                <option>Hayward</option>
+                <option>San Jose</option>
+                <option>Berkeley</option>
+            </select>
+        </nav>
+    </header>
+
+<div class="container-fluid">
+    {{#each venues}}
+    <div class="row">
+        <div class="card mb-3">
+
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="assets/images/ritz.jpeg" width="500px" height="300px" alt="..."
+                        class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- <li>
+        <article class="post">
+        <div class="title">
+            <a href="{{post_url}}" target="_blank">{{title}}</a>
+            <span>({{post_url}})</span>
+        </div>
+        <div class="meta">
+            {{vote_count}} point(s) by {{user.username}} on
+            {{created_at}}
+            |
+            <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
+        </div>
+        </article>
+    </li> --}}
+    {{/each}}
+    
+</div>
+
+{{!-- <div class="container-fluid">
+    <div class="row">
+        <div class="card mb-3">
+
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="assets/images/ritz.jpeg" width="500px" height="300px" alt="..."
+                        class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">San Francisco Ritz Carlton</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<script src="assets/js/search.js"></script>
