@@ -12,12 +12,23 @@
     font-size: 75px;
 }
 
+h3 {
+    font-family: 'Fredericka the Great', cursive;
+    color: white; 
+}
+
+.filter-label {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 20px;;
+    color: #ffc107;
+}
+
 .header-title {
     font-family: 'Fredericka the Great', cursive;
     font-size: 35px;
 }
 
-.yellow-text, h3 {
+.yellow-text {
     color: #ffc107
 }
 

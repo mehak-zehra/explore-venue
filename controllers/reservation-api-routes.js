@@ -12,12 +12,21 @@ router.get('/', (req, res) => {
 
 // create a reservation
 router.post('/', (req, res) => {
+
+  // check if user is logged in
+
+  // check if date is already booked
+
+
   Reservation.create({
     venue_id: req.body.venue_id,
     user_id: req.body.user_id,
     date: req.body.date
   })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      // if everything is good, send to confirmation page
+      res.json(dbUserData)
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -27,15 +36,15 @@ router.post('/', (req, res) => {
 // get all reservations by user ID
 router.get('/users/:id', (req, res) => {
   Reservation.findAll({
-    where : {
+    where: {
       user_id: req.params.id
     }
   })
-  .then(dbUserData => res.json(dbUserData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 

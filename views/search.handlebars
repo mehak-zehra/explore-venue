@@ -1,124 +1,63 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand header-title" href="/">ExploreVenue</a>
-        {{!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <input type="date" id="birthday" name="Date">
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <select id="location-filter" aria-labelledby="navbarDropdownMenuLink" class="selectpicker"
-                        data-live-search="true" onchange="updateLocationFilter()">
-                        <option disabled selected>Location</option>
-                        <option>San Francisco</option>
-                        <option>Fremont</option>
-                        <option>Hayward</option>
-                        <option>San Jose</option>
-                        <option>Berkeley</option>
-                    </select>
-                </li>
-            </ul>
-        </div> --}}
+        <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
     </nav>
 </header>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 filters">
-            <h3>Filter By</h3>
-            <form>
+            <h3 class="mt-2">Filter By</h3>
+            <form action="/search" method="GET">
                 <div class="form-group">
-                    <label for="defaultCheck1">Location</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="location-check-1">
-                        <label class="form-check-label" for="location-check-1">
-                            San Francisco
+                    <img src="assets/images/icons8-location-50.png" width="30px" height="30px">
+                    <label class="filter-label" for="defaultCheck1">Location</label>
+                    {{#each templateVariables.filterByLocations as |location|}}
+                    <div class="form-check ml-4">
+                        <input class="form-check-input" type="checkbox" value="" id="location-check-{{@index}}">
+                        <label class="form-check-label" for="location-check-{{@index}}">
+                            {{location}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="location-check-2">
-                        <label class="form-check-label" for="location-check-2">
-                            Fremont
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="location-check-3">
-                        <label class="form-check-label" for="location-check-3">
-                            Hayward
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="location-check-4">
-                        <label class="form-check-label" for="location-check-4">
-                            Berkeley
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="location-check-5">
-                        <label class="form-check-label" for="location-check-5">
-                            San Jose
-                        </label>
-                    </div>
+                    {{/each}}
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Category</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="categoryRadios" id="category-radio-1"
-                            value="option1" checked>
-                        <label class="form-check-label" for="category-radio-1">
-                            Wedding
+                    <img src="assets/images/icons8-building-50.png" width="30px" height="30px">
+                    <label class="filter-label" for="exampleFormControlSelect1">Category</label>
+                    {{#each templateVariables.filterByCategory as |category|}}
+                    <div class="form-check ml-4">
+                        <input class="form-check-input" type="radio" name="categoryRadios" id="category-radio-{{@index}}"
+                            value="option1">
+                        <label class="form-check-label" for="category-radio-{{@index}}">
+                            {{category}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="categoryRadios" id="category-radio-2"
-                            value="option2">
-                        <label class="form-check-label" for="category-radio-2">
-                            Conference
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="categoryRadios" id="category-radio-3"
-                            value="option2">
-                        <label class="form-check-label" for="category-radio-3">
-                            Party
-                        </label>
-                    </div>
+                    {{/each}}
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Capacity</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="capacity-radio-1"
-                            value="option1" checked>
-                        <label class="form-check-label" for="capacity-radio-1">
-                            50
+                    <img src="assets/images/icons8-account-50.png" width="30px" height="30px">
+                    <label class="filter-label" for="exampleFormControlSelect1">Capacity</label>
+                    {{#each templateVariables.filterByCapacity as |capacity|}}
+                    <div class="form-check ml-4">
+                        <input class="form-check-input" type="radio" name="capacityRadios" id="capacity-radio-{{@index}}"
+                            value="option1">
+                        <label class="form-check-label" for="capacity-radio-{{@index}}">
+                            {{capacity}}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="capacity-radio-2"
-                            value="option2">
-                        <label class="form-check-label" for="capacity-radio-2">
-                            100
-                        </label>
-                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-outline-warning">Apply Filters</button>
                 </div>
 
             </form>
         </div>
         <div class="col-10">
-            {{#each venues}}
+            {{#each templateVariables.venues}}
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -131,6 +70,12 @@
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <form action="/api/reservation" method="POST">
+                                <input type="text" hidden name="venue_id" value="{{id}}">
+                                <input type="text" hidden name="user_id" value="7">
+                                <input type="text" hidden name="date" value="10/01/2021">
+                                <button class="btn btn-warning" type="submit">Book Venue</button>
+                            </form>
                         </div>
                     </div>
                 </div>

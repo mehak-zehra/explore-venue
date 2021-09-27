@@ -1,6 +1,31 @@
 const router = require('express').Router();
 const Venue = require('../models/Venue');
 
+const filterLocationsArr = [
+  "San Franscisco",
+  "Fremont",
+  "San Jose",
+  "Hayward",
+  "Berkeley",
+  "Emeryville",
+  "Los Angeles"
+];
+
+const filterCategoryArr = [
+  "Wedding",
+  "Conference",
+  "Party",
+  "Private"
+]
+
+const filterCapacityArr = [
+  20,
+  50,
+  100,
+  200,
+  500
+]
+
 router.get('/', (req, res) => {
   res.render('homepage');
 });
@@ -25,12 +50,17 @@ router.get('/search', (req, res) => {
     }
   }
 
-  console.log(myLocation)
   Venue.findAll(filters)
     .then((data) => {
       
       const venues = data.map(post => post.get({ plain: true }));
-      res.render('search', {venues});
+      const templateVariables = {
+        venues: venues,
+        filterByLocations: filterLocationsArr,
+        filterByCategory: filterCategoryArr,
+        filterByCapacity: filterCapacityArr
+      }
+      res.render('search', {templateVariables});
     })
     .catch((err) => {
       console.log(err);
