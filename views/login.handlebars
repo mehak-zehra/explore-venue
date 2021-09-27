@@ -1,24 +1,33 @@
+<div class="login-container">
+  <container class="inputBox">
+    <form action="/api/user/login" method="POST">
+      <div class="form-group">
+        <label for="emailAddress">Email:</label>
+        <input id="emailAddress" type="text" name="email">
+      </div>
+      <div class="form-group">
+        <label for="passwordInput">Password:</label>
+        <input id="passwordInput" name="password" type="password">
+      </div>
+      <button class="submit" id="login">Login</button>
+    </form>
+  </container>
+</div>
 
-<form action="/api/user/login" method="POST">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <div class="container">
-    <label for="uname"><b>Email</b></label>
-    <input type="text" placeholder="Enter Username" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <button type="submit">Login</button>
-    {{!-- <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div> --}}
-</form>
+<footer>
+  <ul>
+    <li>
+      <a href="">About Us</a>
+    </li>
+    <li>
+      <a href="">Contact Us</a>
+    </li>
+    <li>
+      <a href="https://github.com/mehak-zehra" target="_blank">Mehak's Github</a>
+    </li>
+    <li>
+      <a href="https://github.com/CarpeTonberry" target="_blank">Kyle's GitHub</a>
+    </li>
+  </ul>
+  <h2>❤️ Made with love by Mehak & Kyle</h2>
+</footer>

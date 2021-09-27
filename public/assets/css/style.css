@@ -63,6 +63,24 @@
   .submit {
       display: flex;
       justify-content: center;
-      width: 100%;
+      width: 50%;
       margin-top: 10px;
+  }
+
+  footer ul {
+    background-color: grey;
+    display: flex;
+    transform: translateY(616px);
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+  }
+
+  footer h2 {
+    transform: translateY(600px);
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    background-color: white;
   }
