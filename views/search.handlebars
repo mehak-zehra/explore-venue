@@ -27,7 +27,7 @@
                     <label class="filter-label" for="exampleFormControlSelect1">Category</label>
                     {{#each templateVariables.filterByCategory as |category|}}
                     <div class="form-check ml-4">
-                        <input class="form-check-input" type="radio" name="categoryRadios" id="category-radio-{{@index}}"
+                        <input class="form-check-input category-radio" type="radio" name="categoryRadios" id="category-radio-{{@index}}"
                             value="option1">
                         <label class="form-check-label" for="category-radio-{{@index}}">
                             {{category}}
@@ -41,7 +41,7 @@
                     <label class="filter-label" for="exampleFormControlSelect1">Capacity</label>
                     {{#each templateVariables.filterByCapacity as |capacity|}}
                     <div class="form-check ml-4">
-                        <input class="form-check-input" type="radio" name="capacityRadios" id="capacity-radio-{{@index}}"
+                        <input class="form-check-input capacity-radio" type="radio" name="capacityRadios" id="capacity-radio-{{@index}}"
                             value="option1">
                         <label class="form-check-label" for="capacity-radio-{{@index}}">
                             {{capacity}}

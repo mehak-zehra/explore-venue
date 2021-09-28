@@ -1,10 +1,17 @@
 
  function applyFilters() {
     const cb = document.querySelectorAll('.location-checkbox');
+    const rbCategory = document.querySelectorAll('.category-radio');
+    const rb_2 = document.querySelectorAll('.')
     for(var i = 0; i< cb.length; i++){
          if(cb[i].checked){
              console.log(cb)
          }
+    }
+    for(var i = 0; i <rbCategory.length; i++) {
+        if(rbCategory[i].checked){
+            console.log(rbCategory)
+        }
     }
     //console.log(cb);
 

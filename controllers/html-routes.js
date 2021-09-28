@@ -27,11 +27,11 @@ const filterCapacityArr = [
 ]
 
 router.get('/', (req, res) => {
-  //console.log(req.session)
   let isLoggedIn = req.session.loggedIn;
   res.render('homepage', {isLoggedIn});
 });
-//----- added logout route front end is left
+
+
 router.get('/login', (req, res) => {
   // if (req.session.loggedIn) {
   //   console.log("logout");
@@ -76,4 +76,5 @@ router.get('/search', (req, res) => {
     });
 
 });
+
 module.exports = router;

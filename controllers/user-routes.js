@@ -1,12 +1,9 @@
 const router = require('express').Router();
 const User = require('../models/User');
-// GET /api/users
+
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
-    User.findAll(
-      //{ attributes: { exclude: ['password'] } },
-    )
-    //new addition---------
+    User.findAll({ attributes: { exclude: ['password'] } },)
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
@@ -16,13 +13,10 @@ router.get('/', (req, res) => {
         res.json(dbUserData);
       });
     })
-  });
+});
 
-  // GET /api/users/1
-  router.post('/login', (req, res) => {
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-    console.log("Heee!")
-    User.findOne({
+router.post('/login', (req, res) => {    
+  User.findOne({
       where: {
         email: req.body.email
       }
@@ -35,7 +29,7 @@ router.get('/', (req, res) => {
       if (!validPassword) {
         res.status(400).json({ message: 'Incorrect password!' });
       }
-//-----------------------//new addition-----------------------------------
+
       req.session.save(() => {
         // declare session variables
         req.session.user_id = dbUserData.id;
@@ -45,9 +39,9 @@ router.get('/', (req, res) => {
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
     });
-  });
-//------//logout route------
-  router.post('/logout', (req, res) => {
+});
+
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();
@@ -57,11 +51,10 @@ router.get('/', (req, res) => {
       res.status(404).end();
     }
 
-  });
+});
 
-// POST /api/users
+
 router.post('/signup', (req, res) => {
-  console.log("hello")
   
   User.create({
     firstname: req.body.firstname,// added names
@@ -69,7 +62,16 @@ router.post('/signup', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-  .then(dbUserData => res.json(dbUserData))
+  .then(dbUserData => {
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.email = dbUserData.email; // question about email? or it should be username? we dont have user name
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'You are now signed in!' });
+    });
+  })
   .catch(err => {
       console.log(err);
       res.status(500).json(err);
