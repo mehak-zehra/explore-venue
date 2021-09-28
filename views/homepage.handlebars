@@ -3,8 +3,12 @@
     {{!-- <a class="navbar-brand"><img src="assets/images/logo-removebg-preview.png" /></a> --}}
     <h1 class="logo">explore<span class="yellow-text">Venue</span></h1>
     <form class="form-inline">
+      {{#if isLoggedIn}}
+      <button id="logout" class="btn btn-outline-warning">Logout</button>
+      {{/if}}
       <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
       <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+      
     </form>
   </nav>
   <main>
@@ -20,3 +24,4 @@
   Thanks for visiting!
 </footer>
 <script src="assets/js/homepage.js"></script>
+<script src="assets/js/logout.js"></script>

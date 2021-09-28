@@ -6,11 +6,16 @@ router.get('/', (req, res) => {
     User.findAll(
       //{ attributes: { exclude: ['password'] } },
     )
-      .then(dbUserData => res.json(dbUserData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+    //new addition---------
+    .then(dbUserData => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.email = dbUserData.email;
+        req.session.loggedIn = true;
+    
+        res.json(dbUserData);
       });
+    })
   });
 
   // GET /api/users/1
@@ -30,16 +35,36 @@ router.get('/', (req, res) => {
       if (!validPassword) {
         res.status(400).json({ message: 'Incorrect password!' });
       }
+//-----------------------//new addition-----------------------------------
+      req.session.save(() => {
+        // declare session variables
+        req.session.user_id = dbUserData.id;
+        req.session.email = dbUserData.email; // question about email? or it should be username? we dont have user name
+        req.session.loggedIn = true;
   
-      res.json({ user: dbUserData, message: 'You are now logged in!' });
+        res.json({ user: dbUserData, message: 'You are now logged in!' });
+      });
     });
+  });
+//------//logout route------
+  router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+    else {
+      res.status(404).end();
+    }
+
   });
 
 // POST /api/users
 router.post('/signup', (req, res) => {
+  console.log("hello")
   
   User.create({
-    firstname: req.body.firstname,
+    firstname: req.body.firstname,// added names
     lastname: req.body.lastname,
     email: req.body.email,
     password: req.body.password
