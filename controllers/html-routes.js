@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const e = require('express');
+const { Op } = require('sequelize')
 const Venue = require('../models/Venue');
 
 const filterLocationsArr = [
@@ -33,47 +35,123 @@ router.get('/', (req, res) => {
 
 
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   console.log("logout");
-  //   res.redirect('/');
-  //   return;
-  // }
+  let isLoggedIn = req.session.loggedIn;
+  if (isLoggedIn) { // redirect to search if user is logged in
+    res.redirect('/search');
+  }
 
   res.render('login');
 });
 
 router.get('/signup', (req, res) => {
+  let isLoggedIn = req.session.loggedIn;
+  if (isLoggedIn) { // redirect to search if user is logged in
+    res.redirect('/search');
+  }
   res.render('signup');
 });
 
-router.get('/search', (req, res) => {
-  let myLocation = req.query.location // read value from query parameter
-  let filters = {};
+router.get('/venue/:id/', (req, res) => {
+  let isLoggedIn = req.session.loggedIn;
+  if (!isLoggedIn) { // redirect to search if user is logged in
+    res.redirect('/login');
+  }
 
+  Venue.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(data => {
+    if (!data) {
+      console.error("no venue found")
+    } else {
+      res.render('single-venue', {data});
+    }
+  })
+});
+
+router.get('/search', (req, res) => {
+  let isLoggedIn = req.session.loggedIn;
+  if (!isLoggedIn) { // redirect to login if user is not logged in
+    res.redirect('/login');
+  }
+  
+  // read values from query parameter
+  let myLocation = req.query.location 
+  let myCategory = req.query.category
+  let myCapacity = req.query.capacity 
+  let searchQuery = req.query.search_query
+  let date = req.query.date
+
+  /**
+   * 
+   * SELECT v* 
+   * FROM venues v 
+   * WHERE
+   *    LOCATION IN (...) AND
+   *    CAPACITY > (...) AND
+   *    QUERY LIKE %(...)% AND
+   *    COUNT(SELECT COUNT FROM RESERVATIONS WHERE VENUE_ID = .. AND DATE = .. AND USER_ID != .. ) < 1 
+   *    
+   * 
+   */
+  let where = {}
   if (myLocation) {
-    filters = {
-      where: {
-        location: myLocation
-      }
+    where.location = {
+      [Op.or] : myLocation.split(",")
     }
   }
 
-  Venue.findAll(filters)
-    .then((data) => {
-      
-      const venues = data.map(post => post.get({ plain: true }));
-      const templateVariables = {
-        venues: venues,
-        filterByLocations: filterLocationsArr,
-        filterByCategory: filterCategoryArr,
-        filterByCapacity: filterCapacityArr
-      }
-      res.render('search', {templateVariables});
+  // if (myCategory) {
+  //   whereClause.category = myCategory
+  // }
+
+  if (myCapacity) {
+    where.capacity = {
+      [Op.gte]: myCapacity
+    }
+  }
+  if (searchQuery) {
+    let q = "%" + searchQuery + "%"
+
+    where.title = {
+      [Op.like] : q
+    }
+  }
+
+  if (date || searchQuery || myCapacity  || myLocation) {
+// [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+    Venue.findAll({
+      where: where
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      .then((data) => {
+        
+        const venues = data.map(post => post.get({ plain: true }));
+        const templateVariables = {
+          venues: venues,
+          filterByLocations: filterLocationsArr,
+          filterByCategory: filterCategoryArr,
+          filterByCapacity: filterCapacityArr,
+          isLoggedIn: isLoggedIn,
+        }
+        res.render('search', {templateVariables});
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  } else {
+        const templateVariables = {
+          venues: [],
+          filterByLocations: filterLocationsArr,
+          filterByCategory: filterCategoryArr,
+          filterByCapacity: filterCapacityArr,
+          isLoggedIn: isLoggedIn,
+        }
+        res.render('search', {templateVariables});
+  }
+  
 
 });
 

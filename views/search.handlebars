@@ -1,6 +1,14 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
         <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+        <form class="form-inline">
+            {{#if templateVariables.isLoggedIn}}
+            <button id="logout" class="btn btn-outline-warning">Logout</button>
+            {{else}}
+            <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
+            <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+            {{/if}}
+        </form>
     </nav>
 </header>
 
@@ -14,7 +22,8 @@
                     <label class="filter-label" for="defaultCheck1">Location</label>
                     {{#each templateVariables.filterByLocations as |location|}}
                     <div class="form-check ml-4">
-                        <input class="form-check-input location-checkbox" type="checkbox" value="" id="location-check-{{@index}}">
+                        <input class="form-check-input location-checkbox" type="checkbox" value="{{location}}"
+                            id="location-check-{{@index}}">
                         <label class="form-check-label" for="location-check-{{@index}}">
                             {{location}}
                         </label>
@@ -27,8 +36,8 @@
                     <label class="filter-label" for="exampleFormControlSelect1">Category</label>
                     {{#each templateVariables.filterByCategory as |category|}}
                     <div class="form-check ml-4">
-                        <input class="form-check-input category-radio" type="radio" name="categoryRadios" id="category-radio-{{@index}}"
-                            value="option1">
+                        <input class="form-check-input category-radio" type="radio" name="categoryRadios"
+                            id="category-radio-{{@index}}" value="{{category}}">
                         <label class="form-check-label" for="category-radio-{{@index}}">
                             {{category}}
                         </label>
@@ -41,48 +50,59 @@
                     <label class="filter-label" for="exampleFormControlSelect1">Capacity</label>
                     {{#each templateVariables.filterByCapacity as |capacity|}}
                     <div class="form-check ml-4">
-                        <input class="form-check-input capacity-radio" type="radio" name="capacityRadios" id="capacity-radio-{{@index}}"
-                            value="option1">
+                        <input class="form-check-input capacity-radio" type="radio" name="capacityRadios"
+                            id="capacity-radio-{{@index}}" value="{{capacity}}">
                         <label class="form-check-label" for="capacity-radio-{{@index}}">
                             {{capacity}}
                         </label>
                     </div>
                     {{/each}}
                 </div>
-
-                <div class="form-group">
-                    <button class="btn btn-outline-warning" onclick="applyFilters()">Apply Filters</button>
-                </div>
-
             </div>
         </div>
         <div class="col-10">
-            {{#each templateVariables.venues}}
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="assets/images/ritz.jpeg" width="500px" height="300px" alt="..."
-                            class="img-fluid rounded-start">
+            <div class="row ml-3">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="event-date" class="col-sm-2 col-form-label mr-2">Event: </label>
+                        <input id="event-date" class="form-control" type="date" placeholder="Select a date">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{title}}</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <form action="/api/reservation" method="POST">
-                                <input type="text" hidden name="venue_id" value="{{id}}">
-                                <input type="text" hidden name="user_id" value="7">
-                                <input type="text" hidden name="date" value="10/01/2021">
-                                <button class="btn btn-warning" type="submit">Book Venue</button>
-                            </form>
+                    <div class="form-group mb-2">
+                        <input id="search-query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="button" onclick="searchForVenues()">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row ml-3">
+                {{#each templateVariables.venues}}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="assets/images/ritz.jpeg" width="500px" height="300px" alt="..."
+                                class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{title}}</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <form action="/venue/{{id}}" method="GET">
+                                    <input type="text" hidden name="venue_id" value="{{id}}">
+                                    <input type="text" hidden name="user_id" value="7">
+                                    <input type="text" hidden name="date" value="10/01/2021">
+                                    <button class="btn btn-dark" type="button" onclick="goToSingleVenue({{id}})">Learn More</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {{/each}}
             </div>
-            {{/each}}
+            
         </div>
     </div>
 </div>
 
 <script src="assets/js/search.js"></script>
+<script src="assets/js/logout.js"></script>

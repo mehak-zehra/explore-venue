@@ -1,0 +1,92 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+        <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+        <form class="form-inline">
+            {{#if templateVariables.isLoggedIn}}
+            <button id="logout" class="btn btn-outline-warning">Logout</button>
+            {{else}}
+            <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
+            <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+            {{/if}}
+        </form>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="slider">
+                        <span id="slide-1"></span>
+                        <span id="slide-2"></span>
+                        <span id="slide-3"></span>
+                        <div class="image-container">
+                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
+                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
+                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
+                        </div>
+                        <div class="buttons">
+                            <a href="#slide-1"></a>
+                            <a href="#slide-2"></a>
+                            <a href="#slide-3"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="d-flex flex-row justify-content-between">
+                                <h3 id="venue-title" class="card-title">San Francisco Ritz Carlton</h3>
+                                <h3 id="venue-price" class="price">$999</h3>
+                            </div>
+                            <div class="rating-container">
+                                <img src="/assets/images/rating.png" width="35" height="35">
+                                <img src="/assets/images/rating.png" width="35" height="35">
+                                <img src="/assets/images/rating.png" width="35" height="35">
+                                <img src="/assets/images/rating.png" width="35" height="35">
+                                <img src="/assets/images/rating.png" width="35" height="35">
+                            </div>
+
+                            <p class="card-text">
+                                This is a wider card with supporting text below as a natural lead-in to additional
+                                content.
+                                This content is a little bit longer.
+                                This is a wider card with supporting text below as a natural lead-in to additional
+                                content.
+                                This content is a little bit longer.
+                                This is a wider card with supporting text below as a natural lead-in to additional
+                                content.
+                                This content is a little bit longer.
+                            </p>
+                            <ul class="venue-details-items">
+                                <li>
+                                    <img src="/assets/images/location.png" width="20" height: 20> <span
+                                        class="location">Location:</span>
+                                </li>
+                                <li>
+                                    <img src="/assets/images/address.png" width="20" height: 20> <span
+                                        class="location">Address:</span>
+                                </li>
+                                <li>
+                                    <img src="/assets/images/phone.png" width="20" height: 20> <span
+                                        class="location">Phone number:</span>
+                                </li>
+                                <li>
+                                    <img src="/assets/images/capacity.gif" width="20" height: 20> <span
+                                        class="location">Capacity:</span>
+                                </li>
+                                <li>
+                                    <img src="/assets/images/wedding.png" width="20" height: 20> <span
+                                        class="location">Category:</span>
+                                </li>
+
+                            </ul>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

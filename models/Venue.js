@@ -1,13 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our User model
 class Venue extends Model {}
 
 // define table columns and configuration
 Venue.init(
   {
-    // TABLE COLUMN DEFINITIONS GO HERE
     id: {
       type: DataTypes.INTEGER,
       allowNull:  false,
@@ -26,12 +24,24 @@ Venue.init(
       type: DataTypes.STRING,
       allowNull:  false,
     },
-    imageUrl: {
+    main_image_url: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    image_url_1: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    image_url_2: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    image_url_3: {
       type: DataTypes.STRING,
       allowNull: true
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     price: {
@@ -50,8 +60,14 @@ Venue.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-
-
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
   },
   {
     // pass in our imported sequelize connection (the direct connection to our database)

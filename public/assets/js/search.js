@@ -1,29 +1,69 @@
 
- function applyFilters() {
+function getFilters() {
     const cb = document.querySelectorAll('.location-checkbox');
-    const rbCategory = document.querySelectorAll('.category-radio');
-    const rb_2 = document.querySelectorAll('.')
-    for(var i = 0; i< cb.length; i++){
-         if(cb[i].checked){
-             console.log(cb)
-         }
-    }
-    for(var i = 0; i <rbCategory.length; i++) {
-        if(rbCategory[i].checked){
-            console.log(rbCategory)
+    let locationsArr = [];
+    for (var i = 0; i < cb.length; i++) {
+        if (cb[i].checked) {
+            console.log(cb[i])
+            locationsArr.push(cb[i].value)
         }
     }
-    //console.log(cb);
+    selectedLocations = locationsArr.toString();
 
-        // const btn = document.querySelector('#btn');
-        // btn.onclick = () => {
-        //     const result = cb.value;
-        //     alert(result);
-        // }
-    // var loc = document.getElementById("location-filter").value;
-    // console.log(loc)
-    // if (loc !== "Location") {
-        
-    // }
-    //window.location.href="/search?location=Fremont";  
- }
+    const rbCategory = document.querySelectorAll('.category-radio');
+    let selectedCategory = "";
+    for (var i = 0; i < rbCategory.length; i++) {
+        if (rbCategory[i].checked) {
+            console.log(rbCategory[i])
+            selectedCategory = rbCategory[i].value;
+            break; // there is only one, since its a radio button
+        }
+    }
+
+    const capacityEls = document.querySelectorAll('.capacity-radio');
+    let selectedCapacity = "";
+    for (var i = 0; i < capacityEls.length; i++) {
+        if (capacityEls[i].checked) {
+            console.log(capacityEls[i])
+            selectedCapacity = capacityEls[i].value;
+            break; // there is only one since its a radio button
+        }
+    }
+    return [selectedLocations, selectedCategory, selectedCapacity];
+}
+
+function searchForVenues(event) {
+    
+    const [selectedLocations, selectedCategory, selectedCapacity] = getFilters();
+
+    const params = new URLSearchParams();
+    if (selectedLocations) {
+        params.append("location", selectedLocations)
+    }
+
+    if (selectedCategory) {
+        params.append("category", selectedCategory)
+    }
+
+    if (selectedCapacity) {
+        params.append("capacity", selectedCapacity)
+    }
+
+    const date = document.querySelector('#event-date');
+    if (date.value) {
+        params.append("date", date.value)
+    }
+
+    const query = document.querySelector('#search-query');
+    if (query.value) {
+        params.append("search_query", query.value)
+    }
+
+    if (params.toString()) {
+        window.location.href = "/search?" + params.toString();
+    }
+}
+
+function goToSingleVenue(id) {
+    window.location.href = "/venue/" + id;
+}

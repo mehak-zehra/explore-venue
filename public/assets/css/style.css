@@ -9,7 +9,7 @@
 .logo, h1 {
     font-family: 'Fredericka the Great', cursive;
     color: white;
-    font-size: 75px;
+    font-size: 60px;
 }
 
 h3 {
@@ -21,6 +21,10 @@ h3 {
     font-family: 'Fredericka the Great', cursive;
     font-size: 20px;;
     color: #ffc107;
+}
+
+.col-form-label {
+    color: black;
 }
 
 .header-title {
@@ -94,4 +98,60 @@ h3 {
     justify-content: center;
     align-self: flex-end;
     background-color: white;
+  }
+
+
+  /* mama stuff */
+  
+  .slider {
+    width: 500px;
+    height: 400px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .image-container {
+    width: 1500px;
+    background-color: pink;
+    height: 300px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+  }
+  .slide {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+  }
+  #slide-1:target ~ .image-container {
+    left: 0px;
+  }
+  #slide-2:target ~ .image-container {
+    left: -500px;
+  }
+  #slide-3:target ~ .image-container {
+    left: -1000px;
+  }
+  .buttons {
+    position: relative;
+    top: -20px;
+  }
+  .buttons a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color:white;
+  }
+
+  #venue-title, #venue-price  {
+    color: black;
+    font-family: sans-serif;
   }

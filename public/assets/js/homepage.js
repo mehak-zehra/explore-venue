@@ -9,3 +9,7 @@ function goToLoginPage() {
 function goToSignUpPage() {
     window.location.href="/signup";  
 }
+
+function goToSingleVenue(id) {
+    window.location.href="/venue/"+id;  
+}
