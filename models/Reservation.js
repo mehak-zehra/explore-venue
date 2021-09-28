@@ -1,13 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our User model
 class Reservation extends Model {}
 
 // define table columns and configuration
 Reservation.init(
   {
-    // TABLE COLUMN DEFINITIONS GO HERE
     id: {
       type: DataTypes.INTEGER,
       allowNull:  false,
@@ -17,10 +15,10 @@ Reservation.init(
     venue_id: {
      type: DataTypes.INTEGER,
      allowNull:  false,
-     references: {
-        model: 'Venue',
-        key: 'id'
-      }
+    //  references: {
+    //     model: 'Venue',
+    //     key: 'id'
+    //   }
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -34,6 +32,10 @@ Reservation.init(
       type: DataTypes.DATE,
       allowNull:  false,
     },
+    confirmation_id: {
+      type:DataTypes.STRING,
+      allowNull: false
+  },
   },
   {
     // pass in our imported sequelize connection (the direct connection to our database)
