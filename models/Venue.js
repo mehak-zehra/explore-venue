@@ -28,18 +28,6 @@ Venue.init(
       type: DataTypes.STRING,
       allowNull: true
     },
-    image_url_1: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    image_url_2: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    image_url_3: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false

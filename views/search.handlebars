@@ -2,7 +2,10 @@
     <header>
         {{#if templateVariables.isLoggedIn}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-            <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+            <div>
+                <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+                <a class="nav-link" href="/reservations">Reservation</a>
+            </div>
             <form class="form-inline">
                 <button id="logout" class="btn btn-outline-warning">Logout</button>
             </form>

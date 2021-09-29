@@ -1,0 +1,46 @@
+<div class="search-page">
+    <header>
+        {{#if templateVariables.isLoggedIn}}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+            <form class="form-inline">
+                <button id="logout" class="btn btn-outline-warning">Logout</button>
+            </form>
+        </nav>
+        {{else}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+            <form class="form-inline">
+                <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
+                <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+            </form>
+        </nav>
+        {{/if}}
+    </header>
+    <div>Reservations</div>
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Confirmation ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each templateVariables.reservations}}
+                <tr>
+                    <td>{{venue_id}}</td>
+                    <td>Mark</td>
+                    <td>{{confirmation_id}}</td>
+                    <td>@mdo</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/global.js"></script>
+</div>

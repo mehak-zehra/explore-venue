@@ -15,10 +15,10 @@ Reservation.init(
     venue_id: {
      type: DataTypes.INTEGER,
      allowNull:  false,
-    //  references: {
-    //     model: 'Venue',
-    //     key: 'id'
-    //   }
+     references: {
+        model: 'Venue',
+        key: 'id'
+      }
     },
     user_id: {
       type: DataTypes.INTEGER,
