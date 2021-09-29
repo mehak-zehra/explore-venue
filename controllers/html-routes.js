@@ -56,7 +56,7 @@ router.get('/venue/:id/', (req, res) => {
   if (!isLoggedIn) { // redirect to search if user is logged in
     res.redirect('/login');
   }
-  console.log("here")
+
   Venue.findAll({
     where: {
       id: req.params.id
@@ -66,6 +66,7 @@ router.get('/venue/:id/', (req, res) => {
       if (!data) {
         console.error("no venue found")
       } else {
+        
         const venues = data.map(post => post.get({ plain: true }));
         const venue = venues[0];
 

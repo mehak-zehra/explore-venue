@@ -75,13 +75,11 @@
                             <form class="form-inline" action="/api/reservation" method="POST">
                                 <div class="form-group mb-2">
                                     <label for="event-date" class="col-sm-2 col-form-label mr-2">Event: </label>
-                                    <input id="event-date" class="form-control" type="date" name="event_date">
+                                    <input id="event-date" class="form-control" type="date" name="event_date" onchange="checkForReservations(event, {{templateVariables.venue.id}})">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" hidden name="venue_id" value="{{id}}">
-                                </div>
-                                <div class="form-group">
-                                    <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+                                    <input type="text" hidden name="venue_id" value="{{templateVariables.venue.id}}">
+                                    <button id="book-venue-btn" class="float-right btn btn-lg btn-warning" disabled>Book Venue</button>
                                 </div>
                             </form>
                         </div>
@@ -92,3 +90,5 @@
 
     </div>
 </div>
+
+<script src="/assets/js/search.js"></script>

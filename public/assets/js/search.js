@@ -33,7 +33,7 @@ function getFilters() {
 }
 
 function searchForVenues(event) {
-    
+
     const [selectedLocations, selectedCategory, selectedCapacity] = getFilters();
 
     const params = new URLSearchParams();
@@ -65,11 +65,30 @@ function searchForVenues(event) {
 }
 
 function goToSingleVenue(id) {
-    const date = document.querySelector('#event-date');
-
-    if (date.value) {
-        sessionStorage.setItem('event_date', date.value);
-    } 
-
     window.location.href = "/venue/" + id;
+}
+
+async function checkForReservations(e, venue_id) {
+    if (e.target.value) {
+        bookVenueEl = document.querySelector("#book-venue-btn")
+
+        const response = await fetch('/api/reservation/available', {
+            method: 'post',
+            body: JSON.stringify({
+                venue_id: venue_id,
+                event_date: e.target.value
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        console.log(response.statusText)
+        if (response.status == 200) {
+            bookVenueEl.innerHTML = "Booked"
+        } else if(response.status == 204) {
+            bookVenueEl.removeAttribute("disabled")
+            bookVenueEl.innerHTML = "Book Venue"
+        } else {
+            alert(response.statusText);
+        }
+    }
 }

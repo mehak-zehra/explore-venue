@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Reservation = require('../models/Reservation');
 const uniqid = require('uniqid');
+const moment = require('moment');
 
 router.get('/', (req, res) => {
   Reservation.findAll()
@@ -25,9 +26,6 @@ router.post('/', (req, res) => {
     confirmation_id: uniqid()
   })
     .then(dbUserData => {
-      // if everything is good, send to confirmation page
-      // res.json(dbUserData)
-      console.log(req.body.event_date)
       res.render("confirmation", {dbUserData})
     })
     .catch(err => {
@@ -44,6 +42,33 @@ router.get('/users/:id', (req, res) => {
     }
   })
     .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post('/available', (req, res) => {
+  Reservation.findAll({
+    where: {
+      venue_id: req.body.venue_id,
+      date: new Date(req.body.event_date)
+    }
+  })
+    .then(data => {
+      if (data) {
+        if (data.length > 0) {
+          res.status(200).json({
+            "available" : false,
+            "user_id" : data[0].user_id
+          })
+        }
+        res.status(204).json({
+          "available" : true
+        })
+      }
+      
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
