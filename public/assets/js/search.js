@@ -81,7 +81,6 @@ async function checkForReservations(e, venue_id) {
             headers: { 'Content-Type': 'application/json' }
         });
 
-        console.log(response.statusText)
         if (response.status == 200) {
             bookVenueEl.innerHTML = "Booked"
         } else if(response.status == 204) {

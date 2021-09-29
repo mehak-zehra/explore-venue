@@ -1,12 +1,12 @@
 <div class="homepage-container container-fluid">
   <nav class="homepage-nav navbar navbar-light bg-light justify-content-between">
-    <h1 class="logo">explore<span class="yellow-text">Venue</span></h1>
+    <a href="/"><h1 class="logo">explore<span class="yellow-text">Venue</span></h1></a>
     <form class="form-inline">
       {{#if isLoggedIn}}
       <button id="logout" class="btn btn-outline-warning">Logout</button>
       {{else}}
-      <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
-      <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+      <button type="button" class="btn btn-link mr-2 btn-lg" onclick="goToSignUpPage()">Sign Up</button>
+      <button type="button" class="btn btn-outline-warning btn-lg" onclick="goToLoginPage()">Login</button>
       {{/if}}
     </form>
   </nav>

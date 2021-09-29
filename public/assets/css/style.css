@@ -6,7 +6,37 @@
     height: 100vh;
 }
 
-.logo {
+.login-page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/login-background.jpeg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    /* background-color:cadetblue; */
+}
+
+.login-form {
+    background-color: whitesmoke;  
+    color: black;
+    opacity: 95%; 
+}
+
+.login-form .form-group {
+    color: black;
+}
+
+.login-container {
+    padding-top: 100px;
+    padding-left: 100px;
+    width: 40%;
+}
+
+.homepage-nav a {
+    text-decoration: none;
+}
+
+
+.logo, h1 {
     font-family: 'Fredericka the Great', cursive;
     color: white;
     font-size: 60px;
@@ -54,14 +84,14 @@ h3 {
 }
 
 /* Kyle login */
-.login-form {
+/* .login-form {
     background-image: url("../images/Login.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 100vh;
     background-position: center;
-}
+} */
 
 .inputBox {
     /* margin-top: 11%; */
@@ -82,23 +112,16 @@ h3 {
       margin-top: 10px;
   }
 
-  footer ul {
-    background-color: grey;
-    display: flex;
-    transform: translateY(616px);
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-  }
+  .footer {
+    background-color: lightgray;
+    height: 100%;
+    color: white;
 
-  footer h2 {
-    transform: translateY(600px);
-    display: flex;
-    justify-content: center;
-    align-self: flex-end;
-    background-color: white;
-  }
+}
+.anchor-name {
+    text-decoration: none;
+    color: white;
+}
 
 
   /* mama stuff */
