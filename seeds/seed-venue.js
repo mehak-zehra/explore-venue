@@ -4,7 +4,7 @@ const venueData = [
   {
     "title": "Marriott Hotel",
     "description": "Marriott International, Inc. is an American multinational company that operates, franchises, and licenses lodging including hotel, residential, and timeshare properties. It is headquartered in Bethesda, Maryland.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/marriot.jpeg",
     "website": "www.marriot.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -17,7 +17,7 @@ const venueData = [
   {
     "title": "Dave and Buster",
     "description": "Dave & Buster's is an American restaurant and entertainment business headquartered in Dallas. Each Dave & Buster's has a full-service restaurant and a video arcade. As of September 2021, the company has 143 locations in the United States and Canada",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/dave-buster.jpeg",
     "website": "www.daveandbuster.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "3",
@@ -28,9 +28,9 @@ const venueData = [
     "phone_number": "510-354-1234"
   },
   {
-    "title": "Chuck e Cheesel",
+    "title": "Chuck e Cheese",
     "description": "Chuck E. Cheese is an American family entertainment center and restaurant pizza chain founded in 1977 by Atari co-founder Nolan Bushnell. Headquartered in Irving, Texas, each location features arcade games, amusement rides, and animatronic stage shows in addition to serving pizza and other food items",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/chucke-cheese1.jpeg",
     "website": "www.chuckecheese.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "4",
@@ -43,7 +43,7 @@ const venueData = [
   {
     "title": "Sala Thai Restaurant",
     "description": "Marriott International, Inc. is an American multinational company that operates, franchises, and licenses lodging including hotel, residential, and timeshare properties. It is headquartered in Bethesda, Maryland.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/sala-thai.jpeg",
     "website": "www.salathai.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "4",
@@ -56,7 +56,7 @@ const venueData = [
   {
     "title": "Hyaat Regency Hotel",
     "description": "Meet Hyatt Thrive, our corporate social responsibility platform. Our purpose of care defines our practice of responsibility. By building strong communities and fostering sustainable practices, we’re working to create an environment in which people thrive. As the Hyatt footprint expands to meet the needs of a more connected and traveled world, we have the opportunity—and the responsibility—to grow with purpose and to protect our environment for generations to come. ",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/hyaat-regency.jpeg",
     "website": "www.hyaatregency.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "4",
@@ -69,7 +69,7 @@ const venueData = [
   {
     "title": "Levi's Satdium",
     "description": "Levi's Stadium is an American football stadium located in Santa Clara, California, just outside San Jose in the San Francisco Bay Area. It has served as the home venue for the National Football League's San Francisco 49ers since 2014.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/stadium.jpeg",
     "website": "www.levisstadium.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -82,7 +82,7 @@ const venueData = [
   {
     "title": "Greenwood Park",
     "description": "Greenwood Park is an excellent little park nestled away in a newer development.  It's the type of park that might make you say, Hey I should move to THIS part of Hayward!  Jokingaside, I was impressed with the park for several reasons.  First, it's very well kept and modern.  There are clean bathrooms, modern kids' play structures, and a basketball court.  The play structures were interesting; they included a climbing wall, musical-hands-on type, and a mound/hill to slide down.  Also, there are plenty of shady spots to sit and have lunch; some of the tables have special tops for playing chess or checkers.  I noticed that the basketball courts and some of the grassy areas were possibly on uneven ground due to the water pooling there.  Another good thing about this park is the ample parking and safe vibe of the neighborhood.  There's no major street nearby and lots of friendly locals around walking",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/gardenwood.jpeg",
     "website": "www.gardenwood.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -95,7 +95,7 @@ const venueData = [
   {
     "title": "Marriot Hotel Milpitas",
     "description": "Marriott International, Inc. is an American multinational company that operates, franchises, and licenses lodging including hotel, residential, and timeshare properties. It is headquartered in Bethesda, Maryland.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/marriot2.jpeg",
     "website": "www.marriothotelmilpitas.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -108,7 +108,7 @@ const venueData = [
   {
     "title": "Hilton Grant Palace",
     "description": " Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content. It helps designers plan out where the content will sit, without needing to wait for the content to be written and approved. It originally comes from a Latin text, but to today's reader, it's seen as gibberish.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/hilton.jpeg",
     "website": "www.hilton.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -121,7 +121,7 @@ const venueData = [
   {
     "title": "The Ranch At Silver Creek",
     "description": "Mediterranean escape that provides exceptional views. Wedding ceremonies overlooking the rolling hills create a charming scenic backdrop! Receptions in our contemporary and elegantly appointed ballroom with tray ceilings, stone accents, a cozy fireplace, and city skyline views will create memories to last a lifetime!",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/TheRanchAtSilverCreek.jpeg",
     "website": "http://theranchatsilvercreek.com/",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -134,8 +134,8 @@ const venueData = [
   {
     "title": "Presidio",
     "description": "The park is home to eight scenic overlooks with spectacular views of the bridge, the bay, the ocean, and the Presidio forest. Overlooks are located along the Presidio trail system​.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
-    "main_image_url": "",
-    "website": "www.presidio.gov",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/Presidio.jpeg",
+    "website": "www.presidio.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "2",
     "price": 5000,
@@ -147,7 +147,7 @@ const venueData = [
   {
     "title": 'Sterling Hotel',
     "description": "The refined Victorian design features architectural amusements like an artisanal stained-glass dome, a cellar bar, and an adorable chapel​.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf1.jpeg",
     "website": "www.sterlinginnsc.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -160,7 +160,7 @@ const venueData = [
   {
     "title": "Ocotillo Oasis",
     "description": "This romantic and lush venue will entice you everywhere you look with delightful photo opportunities - from the sparkling lakes to the rolling greens.​​​​​​​​​​​​​​​​​​​​​​​​​",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/oasis.jpeg",
     "website": "https://www.instagram.com/wedgewood.ocotillo/?hl=en",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "3",
@@ -173,7 +173,7 @@ const venueData = [
   {
     "title": "Aliso Viejo Country Club",
     "description": "A sanctuary for laid back-yet-savvy couples, the views across to Saddleback Mountain are picture perfect and provide a serene backdrop that is naturally-stunning.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/country-club.jpeg",
     "website": "https://avcity.org/",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "3",
@@ -186,7 +186,7 @@ const venueData = [
   {
     "title": "Toll House Hotel",
     "description": "Nestled in the lively downtown, this hotel combines down - to - earth decor and naturesque views with contemporary details",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf2.jpeg",
     "website": "www.tollhousehotel.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -199,7 +199,7 @@ const venueData = [
   {
     "title": "The Pinery at The Hill",
     "description": "The Pinery at The Hill is a resort - style wedding and event venue.The management of this stunning locale welcomes to - be - weds that are seeking a suitable backdrop for their nuptials, with architecture reminiscent of Tuscany in Italy.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/pinery.jpeg",
     "website": "https://www.instagram.com/thepineryatthehill/",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "4",
@@ -212,7 +212,7 @@ const venueData = [
   {
     "title": "Emerald at Queensridge",
     "description": "Emerald at Queensridge was designed and built exclusively for the perfect wedding and reception.Whether you are a local or an out of towner, we guarantee you the wedding you have always dreamed about.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/french-beach-venue.jpeg",
     "website": "https://www.emeraldatqueensridge.com/",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -225,7 +225,7 @@ const venueData = [
   {
     "title": "Zion Red Rock",
     "description": "The Zion Red Rock Oasis is a spacious, 14, 000 sq ft multi million dollar luxurious mansion nestled on 15 acres of beautiful land.This mansion wedding venue serves as an ideal location for the adventurous couples.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/zareens.jpeg",
     "website": "https://https://www.zionredrock.com/",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "3",
@@ -238,7 +238,7 @@ const venueData = [
   {
     "title": "Hyatt Regency Maui Resort & Spa",
     "description": "Set on 40 acres on Ka’anapali Beach, the completely - reimagined Hyatt Regency Maui Resort and Spa is a getaway in paradise.",
-    "main_image_url": "",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/hyaat-regency.jpeg",
     "website": "www.hyatt.com/en-US/hotel/hawaii/hyatt-regency-maui-resort-and-spa",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "4",
