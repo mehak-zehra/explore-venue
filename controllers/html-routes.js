@@ -98,18 +98,6 @@ router.get('/search', (req, res) => {
   let searchQuery = req.query.search_query
   let date = req.query.date
 
-  /**
-   * 
-   * SELECT v* 
-   * FROM venues v 
-   * WHERE
-   *    LOCATION IN (...) AND
-   *    CAPACITY > (...) AND
-   *    QUERY LIKE %(...)% AND
-   *    COUNT(SELECT COUNT FROM RESERVATIONS WHERE VENUE_ID = .. AND DATE = .. AND USER_ID != .. ) < 1 
-   *    
-   * 
-   */
   let where = {}
   if (myLocation) {
     where.location = {
@@ -135,19 +123,20 @@ router.get('/search', (req, res) => {
   }
 
   if (date || searchQuery || myCapacity || myLocation) {
-    // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     Venue.findAll({
       where: where
     })
       .then((data) => {
-
+        
         const venues = data.map(post => post.get({ plain: true }));
+        let shouldShowResults = venues.length == 0
         const templateVariables = {
           venues: venues,
           filterByLocations: filterLocationsArr,
           filterByCategory: filterCategoryArr,
           filterByCapacity: filterCapacityArr,
           isLoggedIn: isLoggedIn,
+          showResults: shouldShowResults
         }
         res.render('search', { templateVariables });
       })
@@ -162,10 +151,10 @@ router.get('/search', (req, res) => {
       filterByCategory: filterCategoryArr,
       filterByCapacity: filterCapacityArr,
       isLoggedIn: isLoggedIn,
+      showResults: false
     }
     res.render('search', { templateVariables });
   }
-
 
 });
 
