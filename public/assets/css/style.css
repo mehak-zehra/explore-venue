@@ -31,8 +31,16 @@
     width: 40%;
 }
 
-.homepage-nav a {
+.homepage-nav a, .sign-up-btn:hover {
     text-decoration: none;
+}
+
+.sign-up-btn:hover {
+  color: #ffc107;
+}
+
+.carousel-container {
+  margin-left: 40px;
 }
 
 
@@ -112,11 +120,12 @@ h3 {
       margin-top: 10px;
   }
 
-  .footer {
-    background-color: lightgray;
-    height: 100%;
+  footer {
+    background: black;
     color: white;
-
+    width: 100%;
+    padding: 20px 20px;
+    text-align: center;
 }
 .anchor-name {
     text-decoration: none;
@@ -127,16 +136,14 @@ h3 {
   /* mama stuff */
   
   .slider {
-    width: 500px;
-    height: 400px;
-    background-color: yellow;
+    
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
     text-align: center;
     overflow: hidden;
   }
-  .image-container {
+  /* .image-container {
     width: 1500px;
     background-color: pink;
     height: 300px;
@@ -146,7 +153,7 @@ h3 {
     -moz-transition: left 2s;
     -o-transition: left 2s;
     transition: left 2s;
-  }
+  } */
   .slide {
     float: left;
     margin: 0px;
@@ -162,7 +169,7 @@ h3 {
   #slide-3:target ~ .image-container {
     left: -1000px;
   }
-  .buttons {
+  /* .buttons {
     position: relative;
     top: -20px;
   }
@@ -172,7 +179,7 @@ h3 {
     width: 15px;
     border-radius: 50px;
     background-color:white;
-  }
+  } */
 
   #venue-title, #venue-price  {
     color: black;

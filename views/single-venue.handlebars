@@ -12,83 +12,74 @@
     </nav>
 </header>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-10">
+        <div class="col">
             <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="slider">
-                        <span id="slide-1"></span>
-                        <span id="slide-2"></span>
-                        <span id="slide-3"></span>
-                        <div class="image-container">
-                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
-                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
-                            <img src="/assets/images/ritz.jpeg" class="slide" width="500" height="400" />
-                        </div>
-                        <div class="buttons">
-                            <a href="#slide-1"></a>
-                            <a href="#slide-2"></a>
-                            <a href="#slide-3"></a>
-                        </div>
+                <img class="card-img-top" src="{{templateVariables.venue.main_image_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 id="venue-title" class="card-title">{{templateVariables.venue.title}}</h3>
+                        <h3 id="venue-price" class="price">${{templateVariables.venue.price}}</h3>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="d-flex flex-row justify-content-between">
-                                <h3 id="venue-title" class="card-title">{{templateVariables.venue.title}}</h3>
-                                <h3 id="venue-price" class="price">${{templateVariables.venue.price}}</h3>
-                            </div>
-                            <div class="rating-container">
-                                {{#each templateVariables.stars}}
-                                <img src="/assets/images/rating.png" width="35" height="35">
-                                {{/each}}
-                            </div>
 
-                            <p class="card-text">
-                                {{templateVariables.venue.description}}
-                            </p>
-                            <ul class="venue-details-items">
-                                <li>
-                                    <img src="/assets/images/location.png" width="20" height: 20> <span
-                                        class="location">Location: {{templateVariables.venue.location}}</span>
-                                </li>
-                                <li>
-                                    <img src="/assets/images/address.png" width="20" height: 20> <span
-                                        class="location">Address: {{templateVariables.venue.address}}</span>
-                                </li>
-                                <li>
-                                    <img src="/assets/images/phone.png" width="20" height: 20> <span
-                                        class="location">Phone number: {{templateVariables.venue.phone_number}}</span>
-                                </li>
-                                <li>
-                                    <img src="/assets/images/capacity.gif" width="20" height: 20> <span
-                                        class="location">Capacity: {{templateVariables.venue.capacity}}</span>
-                                </li>
-                                <li>
-                                    <img src="/assets/images/wedding.png" width="20" height: 20> <span
-                                        class="location">Category: {{templateVariables.venue.category}}</span>
-                                </li>
-
-                            </ul>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-                            <form class="form-inline" action="/api/reservation" method="POST">
-                                <div class="form-group mb-2">
-                                    <label for="event-date" class="col-sm-2 col-form-label mr-2">Event: </label>
-                                    <input id="event-date" class="form-control" type="date" name="event_date" onchange="checkForReservations(event, {{templateVariables.venue.id}})">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" hidden name="venue_id" value="{{templateVariables.venue.id}}">
-                                    <button id="book-venue-btn" class="float-right btn btn-lg btn-warning" disabled>Book Venue</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="rating-container">
+                        {{#each templateVariables.stars}}
+                        <img src="/assets/images/rating.png" width="35" height="35">
+                        {{/each}}
                     </div>
+                    <p class="card-text mt-2">
+                        {{templateVariables.venue.description}}
+                    </p>
+                    <div>
+                        <ul class="venue-details-items">
+                            <li>
+                                <img src="/assets/images/location.png" width="20" height: 20> <span
+                                    class="location">Location: {{templateVariables.venue.location}}</span>
+                            </li>
+                            <li>
+                                <img src="/assets/images/address.png" width="20" height: 20> <span
+                                    class="location">Address: {{templateVariables.venue.address}}</span>
+                            </li>
+                            <li>
+                                <img src="/assets/images/phone.png" width="20" height: 20> <span class="location">Phone
+                                    number: {{templateVariables.venue.phone_number}}</span>
+                            </li>
+                            <li>
+                                <img src="/assets/images/capacity.gif" width="20" height: 20> <span
+                                    class="location">Capacity: {{templateVariables.venue.capacity}}</span>
+                            </li>
+                            <li>
+                                <img src="/assets/images/wedding.png" width="20" height: 20> <span
+                                    class="location">Category: {{templateVariables.venue.category}}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between">
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <form class="form-inline" action="/api/reservation" method="POST">
+                            <div class="form-group mb-2">
+                                <label for="event-date" class="col-sm-2 col-form-label mr-2">Event: </label>
+                                <input id="event-date" class="form-control" type="date" name="event_date"
+                                    onchange="checkForReservations(event, {{templateVariables.venue.id}})">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" hidden name="venue_id" value="{{templateVariables.venue.id}}">
+                                <button id="book-venue-btn" disabled class="float-right btn btn-warning">
+                                    Book Venue
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
+
         </div>
 
     </div>
 </div>
 
 <script src="/assets/js/search.js"></script>
+<script src="/assets/js/global.js"></script>
