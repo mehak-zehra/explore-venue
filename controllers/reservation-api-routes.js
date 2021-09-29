@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const Reservation = require('../models/Reservation');
 const uniqid = require('uniqid');
-const moment = require('moment');
 
 router.get('/', (req, res) => {
   Reservation.findAll()
@@ -14,19 +13,19 @@ router.get('/', (req, res) => {
 
 // create a reservation
 router.post('/', (req, res) => {
-
-  // check if user is logged in
-  
-  // check if date is already booked
-
+  let confirmation_id = uniqid()
   Reservation.create({
     venue_id: req.body.venue_id,
     user_id: req.session.user_id,
     date: req.body.event_date,
-    confirmation_id: uniqid()
+    confirmation_id: confirmation_id
   })
     .then(dbUserData => {
-      res.render("confirmation", {dbUserData})
+
+      res.render("confirmation", {
+        confirmation_id: confirmation_id,
+        isLoggedIn: req.session.loggedIn,
+      });
     })
     .catch(err => {
       console.log(err);

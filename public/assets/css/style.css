@@ -54,6 +54,10 @@ h3 {
     font-family: 'Fredericka the Great', cursive;
     color: white; 
 }
+.confirm-title {
+  font-family: 'Fredericka the Great', cursive;
+  color: black; 
+}
 
 .filter-label {
     font-family: 'Fredericka the Great', cursive;
@@ -89,6 +93,10 @@ h3 {
 
 .homepage-nav {
     background-color: transparent !important;
+}
+
+p {
+  color: black;
 }
 
 /* Kyle login */
