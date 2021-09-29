@@ -64,9 +64,9 @@ function searchForVenues(event) {
     }
 }
 
-function goToSingleVenue(id) {
-    window.location.href = "/venue/" + id;
-}
+// function goToSingleVenue(id) {
+//     window.location.href = "/venue/" + id;
+// }
 
 async function checkForReservations(e, venue_id) {
     if (e.target.value) {

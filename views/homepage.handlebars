@@ -1,15 +1,19 @@
 <div class="homepage-container container-fluid">
-  <nav class="homepage-nav navbar navbar-light bg-light justify-content-between">
-    <a href="/"><h1 class="logo">explore<span class="yellow-text">Venue</span></h1></a>
-    <form class="form-inline">
-      {{#if isLoggedIn}}
-      <button id="logout" class="btn btn-outline-warning">Logout</button>
-      {{else}}
-      <button type="button" class="btn btn-link mr-2 btn-lg" onclick="goToSignUpPage()">Sign Up</button>
-      <button type="button" class="btn btn-outline-warning btn-lg" onclick="goToLoginPage()">Login</button>
-      {{/if}}
-    </form>
-  </nav>
+  <header>
+    <nav class="homepage-nav navbar navbar-light bg-light justify-content-between">
+      <a href="/">
+        <h1 class="logo">explore<span class="yellow-text">Venue</span></h1>
+      </a>
+      <form class="form-inline">
+        {{#if isLoggedIn}}
+        <button id="logout" class="btn btn-outline-warning">Logout</button>
+        {{else}}
+        <button type="button" class="sign-up-btn btn btn-link mr-2 btn-lg" onclick="goToSignUpPage()">Sign Up</button>
+        <button type="button" class="btn btn-outline-warning btn-lg" onclick="goToLoginPage()">Login</button>
+        {{/if}}
+      </form>
+    </nav>
+  </header>
 
   <div class="jumbotron mt-5">
     <h1 class="display-4">A perfect venue for a special occassion </h1>
@@ -22,5 +26,5 @@
 
 </div>
 
-<script src="assets/js/homepage.js"></script>
+<script src="assets/js/global.js"></script>
 <script src="assets/js/logout.js"></script>

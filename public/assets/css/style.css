@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.login-page {
+.login-page, .signup-page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/login-background.jpeg");
     background-position: center;
     background-size: cover;
@@ -15,17 +15,17 @@
     /* background-color:cadetblue; */
 }
 
-.login-form {
+.login-form, .signup-form {
     background-color: whitesmoke;  
     color: black;
     opacity: 95%; 
 }
 
-.login-form .form-group {
+.login-form .form-group, .signup-form .form-group {
     color: black;
 }
 
-.login-container {
+.login-container, .signup-container {
     padding-top: 100px;
     padding-left: 100px;
     width: 40%;
