@@ -95,7 +95,7 @@ const venueData = [
   {
     "title": "Marriot Hotel Milpitas",
     "description": "Marriott International, Inc. is an American multinational company that operates, franchises, and licenses lodging including hotel, residential, and timeshare properties. It is headquartered in Bethesda, Maryland.",
-    "main_image_url": "https://mehak-file-service.herokuapp.com/file/marriot2.jpeg",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/ritz-carlton.jpeg",
     "website": "www.marriothotelmilpitas.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -147,7 +147,7 @@ const venueData = [
   {
     "title": 'Sterling Hotel',
     "description": "The refined Victorian design features architectural amusements like an artisanal stained-glass dome, a cellar bar, and an adorable chapel​.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
-    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf1.jpeg",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf1.png",
     "website": "www.sterlinginnsc.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
@@ -186,7 +186,7 @@ const venueData = [
   {
     "title": "Toll House Hotel",
     "description": "Nestled in the lively downtown, this hotel combines down - to - earth decor and naturesque views with contemporary details",
-    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf2.jpeg",
+    "main_image_url": "https://mehak-file-service.herokuapp.com/file/conf2.png",
     "website": "www.tollhousehotel.com",
     "category": ["Wedding", "Birthday", "Exhibition", "Concert", "Conference"].toString(),
     "rating": "5",
