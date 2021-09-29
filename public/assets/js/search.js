@@ -49,10 +49,10 @@ function searchForVenues(event) {
         params.append("capacity", selectedCapacity)
     }
 
-    const date = document.querySelector('#event-date');
-    if (date.value) {
-        params.append("date", date.value)
-    }
+    // const date = document.querySelector('#event-date');
+    // if (date.value) {
+    //     params.append("date", date.value)
+    // }
 
     const query = document.querySelector('#search-query');
     if (query.value) {
@@ -65,5 +65,11 @@ function searchForVenues(event) {
 }
 
 function goToSingleVenue(id) {
+    const date = document.querySelector('#event-date');
+
+    if (date.value) {
+        sessionStorage.setItem('event_date', date.value);
+    } 
+
     window.location.href = "/venue/" + id;
 }

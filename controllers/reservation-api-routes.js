@@ -15,19 +15,19 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
   // check if user is logged in
-
+  
   // check if date is already booked
-
 
   Reservation.create({
     venue_id: req.body.venue_id,
     user_id: req.session.user_id,
-    date: req.body.date,
+    date: req.body.event_date,
     confirmation_id: uniqid()
   })
     .then(dbUserData => {
       // if everything is good, send to confirmation page
       // res.json(dbUserData)
+      console.log(req.body.event_date)
       res.render("confirmation", {dbUserData})
     })
     .catch(err => {

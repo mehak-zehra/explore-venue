@@ -71,12 +71,19 @@
 
                             </ul>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <form action="/api/reservation" method="POST">
-                                <input type="text" hidden name="venue_id" value="{{id}}">
-                                <input type="text" hidden name="date" value="10/01/2021">
-                                <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+
+                            <form class="form-inline" action="/api/reservation" method="POST">
+                                <div class="form-group mb-2">
+                                    <label for="event-date" class="col-sm-2 col-form-label mr-2">Event: </label>
+                                    <input id="event-date" class="form-control" type="date" name="event_date">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" hidden name="venue_id" value="{{id}}">
+                                </div>
+                                <div class="form-group">
+                                    <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+                                </div>
                             </form>
-                            
                         </div>
                     </div>
                 </div>
