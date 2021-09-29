@@ -4,13 +4,16 @@ const { Op } = require('sequelize')
 const Venue = require('../models/Venue');
 
 const filterLocationsArr = [
-  "San Franscisco",
   "Fremont",
-  "San Jose",
+  "Milpitas",
+  "Newark",
+  "Pleasanton",
+  "Oakland",
   "Hayward",
+  "Plesanton",
   "Berkeley",
-  "Emeryville",
-  "Los Angeles"
+  "Richmond",
+  "Sacramento",
 ];
 
 const filterCategoryArr = [
@@ -66,7 +69,7 @@ router.get('/venue/:id/', (req, res) => {
       if (!data) {
         console.error("no venue found")
       } else {
-        
+
         const venues = data.map(post => post.get({ plain: true }));
         const venue = venues[0];
 
@@ -74,7 +77,7 @@ router.get('/venue/:id/', (req, res) => {
         for (var i = 0; i < venue.rating; i++) {
           starsArr.push("star");
         }
-        
+
         const templateVariables = {
           venue: venues[0],
           isLoggedIn: isLoggedIn,
@@ -127,7 +130,7 @@ router.get('/search', (req, res) => {
       where: where
     })
       .then((data) => {
-        
+
         const venues = data.map(post => post.get({ plain: true }));
         let shouldShowResults = venues.length == 0
         const templateVariables = {

@@ -14,6 +14,15 @@
     height: 100vh;
 }
 
+.search-page {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/18410.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+
 .login-form, .signup-form {
     background-color: whitesmoke;  
     color: black;
@@ -85,7 +94,7 @@ h3 {
     color: white;
 }
 
-.jumbotron p {
+.homepage-lead {
   color: white !important;
   font-size: 25px;
   font-family: 'sans-serif';
@@ -99,9 +108,11 @@ h3 {
     background-color: transparent !important;
 }
 
-p {
-  color: black;
+p, .error-template h1 {
+  color: black !important;
 }
+
+
 
 /* Kyle login */
 /* .login-form {

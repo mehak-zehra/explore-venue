@@ -1,89 +1,91 @@
-<header>
-    {{#if templateVariables.isLoggedIn}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
-        <form class="form-inline">
-            <button id="logout" class="btn btn-outline-warning">Logout</button>
-        </form>
-    </nav>
-    {{else}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
-        <form class="form-inline">
-            <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
-            <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
-        </form>
-    </nav>
-    {{/if}}
-</header>
+<div class="search-page">
+    <header>
+        {{#if templateVariables.isLoggedIn}}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+            <form class="form-inline">
+                <button id="logout" class="btn btn-outline-warning">Logout</button>
+            </form>
+        </nav>
+        {{else}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <a class="navbar-brand header-title" href="/">explore<span class="yellow-text">Venue</span></a>
+            <form class="form-inline">
+                <button type="button" class="btn btn-link mr-2" onclick="goToSignUpPage()">Sign Up</button>
+                <button type="button" class="btn btn-outline-warning" onclick="goToLoginPage()">Login</button>
+            </form>
+        </nav>
+        {{/if}}
+    </header>
 
-<div class="container">
-    <div class="row search-filters-row mt-3 mb-3">
-        <span class="navbar-text font-weight-bold">
-            <img src="assets/images/icons8-location-50.png" width="30px" height="30px">
-            Location:
-        </span>
-        <div class="col-md-2">
-            <select id="location-select" class="custom-select">
-                <option selected>City</option>
-                {{#each templateVariables.filterByLocations as |location|}}
-                <option value="{{location}}">{{location}}</option>
-                {{/each}}
-            </select>
+    <div class="container">
+        <div class="row search-filters-row mt-3 mb-3">
+            <span class="navbar-text font-weight-bold">
+                <img src="assets/images/icons8-location-50.png" width="30px" height="30px">
+                Location:
+            </span>
+            <div class="col-md-2">
+                <select id="location-select" class="custom-select">
+                    <option selected>City</option>
+                    {{#each templateVariables.filterByLocations as |location|}}
+                    <option value="{{location}}">{{location}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col-md-5">
+                <input id="search-query" class="form-control mr-sm-2" type="search" placeholder="Search"
+                    aria-label="Search">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-warning my-2 my-sm-0" type="button"
+                    onclick="searchForVenues()">Search</button>
+            </div>
         </div>
-        <div class="col-md-5">
-            <input id="search-query" class="form-control mr-sm-2" type="search" placeholder="Search"
-                aria-label="Search">
-        </div>
-        <div class="col-md-3">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="button"
-                onclick="searchForVenues()">Search</button>
-        </div>
-    </div>
 
-    <div class="row">
-        {{#each templateVariables.venues}}
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{main_image_url}}" width="500px" height="300px" alt="..."
-                        class="img-fluid rounded-start">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
-                        <p class="card-text">{{description}}</p>
-                        <p class="card-text"><small class="text-muted">{{location}}, CA</small></p>
-                        <form action="/venue/{{id}}" method="GET">
-                            <input type="text" hidden name="venue_id" value="{{id}}">
-                            <input type="text" hidden name="user_id" value="7">
-                            <input type="text" hidden name="date" value="10/01/2021">
-                            <button class="btn btn-dark" type="button" onclick="goToSingleVenue({{id}})">Learn
-                                More</button>
-                        </form>
+        <div class="row">
+            {{#each templateVariables.venues}}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{main_image_url}}" width="500px" height="300px" alt="..."
+                            class="img-fluid rounded-start">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{title}}</h5>
+                            <p class="card-text">{{description}}</p>
+                            <p class="card-text"><small class="text-muted">{{location}}, CA</small></p>
+                            <form action="/venue/{{id}}" method="GET">
+                                <input type="text" hidden name="venue_id" value="{{id}}">
+                                <input type="text" hidden name="user_id" value="7">
+                                <input type="text" hidden name="date" value="10/01/2021">
+                                <button class="btn btn-dark" type="button" onclick="goToSingleVenue({{id}})">Learn
+                                    More</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{/each}}
-        {{#if templateVariables.showResults}}
-        <div class="error-template">
-            <h1 class="error-message">Oh No!</h1>
-            <h2 class="error-message">No venues were available</h2>
-            <div class="error-details">
-                No results were found for Venues with your search. Please try with different filters, date, or
-                search query
-            </div>
-            <div class="error-actions">
+            {{/each}}
+            {{#if templateVariables.showResults}}
+            <div class="error-template mt-3 mb-5">
+                <h1 class="error-message">Oh No!</h1>
+                <h2 class="error-message">No venues were available</h2>
+                <div class="error-details">
+                    No results were found for Venues with your search. Please try with different filters, or
+                    search query
+                </div>
+                <div class="error-actions">
 
+                </div>
             </div>
-        </div>
-        {{else}}
-        <div></div>
-        {{/if}}
+            {{else}}
+            <div></div>
+            {{/if}}
 
+        </div>
     </div>
-</div>
 
-<script src="assets/js/search.js"></script>
-<script src="assets/js/global.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/global.js"></script>
+</div>

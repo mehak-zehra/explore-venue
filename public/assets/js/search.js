@@ -31,6 +31,7 @@ async function checkForReservations(e, venue_id) {
 
         if (response.status == 200) {
             bookVenueEl.innerHTML = "Booked"
+            bookVenueEl.setAttribute("disabled", "disabled")
         } else if(response.status == 204) {
             bookVenueEl.removeAttribute("disabled")
             bookVenueEl.innerHTML = "Book Venue"
