@@ -35,53 +35,48 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-between">
-                                <h3 id="venue-title" class="card-title">San Francisco Ritz Carlton</h3>
-                                <h3 id="venue-price" class="price">$999</h3>
+                                <h3 id="venue-title" class="card-title">{{templateVariables.venue.title}}</h3>
+                                <h3 id="venue-price" class="price">${{templateVariables.venue.price}}</h3>
                             </div>
                             <div class="rating-container">
+                                {{#each templateVariables.stars}}
                                 <img src="/assets/images/rating.png" width="35" height="35">
-                                <img src="/assets/images/rating.png" width="35" height="35">
-                                <img src="/assets/images/rating.png" width="35" height="35">
-                                <img src="/assets/images/rating.png" width="35" height="35">
-                                <img src="/assets/images/rating.png" width="35" height="35">
+                                {{/each}}
                             </div>
 
                             <p class="card-text">
-                                This is a wider card with supporting text below as a natural lead-in to additional
-                                content.
-                                This content is a little bit longer.
-                                This is a wider card with supporting text below as a natural lead-in to additional
-                                content.
-                                This content is a little bit longer.
-                                This is a wider card with supporting text below as a natural lead-in to additional
-                                content.
-                                This content is a little bit longer.
+                                {{templateVariables.venue.description}}
                             </p>
                             <ul class="venue-details-items">
                                 <li>
                                     <img src="/assets/images/location.png" width="20" height: 20> <span
-                                        class="location">Location:</span>
+                                        class="location">Location: {{templateVariables.venue.location}}</span>
                                 </li>
                                 <li>
                                     <img src="/assets/images/address.png" width="20" height: 20> <span
-                                        class="location">Address:</span>
+                                        class="location">Address: {{templateVariables.venue.address}}</span>
                                 </li>
                                 <li>
                                     <img src="/assets/images/phone.png" width="20" height: 20> <span
-                                        class="location">Phone number:</span>
+                                        class="location">Phone number: {{templateVariables.venue.phone_number}}</span>
                                 </li>
                                 <li>
                                     <img src="/assets/images/capacity.gif" width="20" height: 20> <span
-                                        class="location">Capacity:</span>
+                                        class="location">Capacity: {{templateVariables.venue.capacity}}</span>
                                 </li>
                                 <li>
                                     <img src="/assets/images/wedding.png" width="20" height: 20> <span
-                                        class="location">Category:</span>
+                                        class="location">Category: {{templateVariables.venue.category}}</span>
                                 </li>
 
                             </ul>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+                            <form action="/api/reservation" method="POST">
+                                <input type="text" hidden name="venue_id" value="{{id}}">
+                                <input type="text" hidden name="date" value="10/01/2021">
+                                <button class="float-right btn btn-lg btn-warning">Book Venue</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

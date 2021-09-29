@@ -74,6 +74,7 @@
                 </form>
             </div>
             <div class="row ml-3">
+                
                 {{#each templateVariables.venues}}
                 <div class="card mb-3">
                     <div class="row g-0">
@@ -97,9 +98,19 @@
                         </div>
                     </div>
                 </div>
+                {{else}}
+                <div class="error-template">
+                    <h1 class="error-message text-black">oh no!</h1>
+                    <h2 class="error-message">no venues were available</h2>
+                    <div class="error-details">
+                        no results were found for Venues with your search. Please try with different filters, date, or search query
+                    </div>
+                    <div class="error-actions">
+                    {{!-- <span class="glyphicon glyphicon-hand-up search-icon"> ffff</span> --}}
+                    </div>
+                </div>
                 {{/each}}
             </div>
-            
         </div>
     </div>
 </div>

@@ -30,7 +30,7 @@ const filterCapacityArr = [
 
 router.get('/', (req, res) => {
   let isLoggedIn = req.session.loggedIn;
-  res.render('homepage', {isLoggedIn});
+  res.render('homepage', { isLoggedIn });
 });
 
 
@@ -56,19 +56,32 @@ router.get('/venue/:id/', (req, res) => {
   if (!isLoggedIn) { // redirect to search if user is logged in
     res.redirect('/login');
   }
-
-  Venue.findOne({
+  console.log("here")
+  Venue.findAll({
     where: {
       id: req.params.id
-    }
+    },
   })
-  .then(data => {
-    if (!data) {
-      console.error("no venue found")
-    } else {
-      res.render('single-venue', {data});
-    }
-  })
+    .then((data) => {
+      if (!data) {
+        console.error("no venue found")
+      } else {
+        const venues = data.map(post => post.get({ plain: true }));
+        const venue = venues[0];
+
+        starsArr = [];
+        for (var i = 0; i < venue.rating; i++) {
+          starsArr.push("star");
+        }
+        
+        const templateVariables = {
+          venue: venues[0],
+          isLoggedIn: isLoggedIn,
+          stars: starsArr
+        }
+        res.render('single-venue', { templateVariables });
+      }
+    })
 });
 
 router.get('/search', (req, res) => {
@@ -76,11 +89,11 @@ router.get('/search', (req, res) => {
   if (!isLoggedIn) { // redirect to login if user is not logged in
     res.redirect('/login');
   }
-  
+
   // read values from query parameter
-  let myLocation = req.query.location 
+  let myLocation = req.query.location
   let myCategory = req.query.category
-  let myCapacity = req.query.capacity 
+  let myCapacity = req.query.capacity
   let searchQuery = req.query.search_query
   let date = req.query.date
 
@@ -99,7 +112,7 @@ router.get('/search', (req, res) => {
   let where = {}
   if (myLocation) {
     where.location = {
-      [Op.or] : myLocation.split(",")
+      [Op.or]: myLocation.split(",")
     }
   }
 
@@ -116,17 +129,17 @@ router.get('/search', (req, res) => {
     let q = "%" + searchQuery + "%"
 
     where.title = {
-      [Op.like] : q
+      [Op.like]: q
     }
   }
 
-  if (date || searchQuery || myCapacity  || myLocation) {
-// [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+  if (date || searchQuery || myCapacity || myLocation) {
+    // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     Venue.findAll({
       where: where
     })
       .then((data) => {
-        
+
         const venues = data.map(post => post.get({ plain: true }));
         const templateVariables = {
           venues: venues,
@@ -135,23 +148,23 @@ router.get('/search', (req, res) => {
           filterByCapacity: filterCapacityArr,
           isLoggedIn: isLoggedIn,
         }
-        res.render('search', {templateVariables});
+        res.render('search', { templateVariables });
       })
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
       });
   } else {
-        const templateVariables = {
-          venues: [],
-          filterByLocations: filterLocationsArr,
-          filterByCategory: filterCategoryArr,
-          filterByCapacity: filterCapacityArr,
-          isLoggedIn: isLoggedIn,
-        }
-        res.render('search', {templateVariables});
+    const templateVariables = {
+      venues: [],
+      filterByLocations: filterLocationsArr,
+      filterByCategory: filterCategoryArr,
+      filterByCapacity: filterCapacityArr,
+      isLoggedIn: isLoggedIn,
+    }
+    res.render('search', { templateVariables });
   }
-  
+
 
 });
 

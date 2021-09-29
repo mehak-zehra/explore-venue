@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Reservation = require('../models/Reservation');
+const uniqid = require('uniqid');
 
 router.get('/', (req, res) => {
   Reservation.findAll()
@@ -20,12 +21,14 @@ router.post('/', (req, res) => {
 
   Reservation.create({
     venue_id: req.body.venue_id,
-    user_id: req.body.user_id,
-    date: req.body.date
+    user_id: req.session.user_id,
+    date: req.body.date,
+    confirmation_id: uniqid()
   })
     .then(dbUserData => {
       // if everything is good, send to confirmation page
-      res.json(dbUserData)
+      // res.json(dbUserData)
+      res.render("confirmation", {dbUserData})
     })
     .catch(err => {
       console.log(err);

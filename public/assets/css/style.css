@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.logo, h1 {
+.logo {
     font-family: 'Fredericka the Great', cursive;
     color: white;
     font-size: 60px;
