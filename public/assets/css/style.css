@@ -58,30 +58,48 @@ h3 {
     height: 100vh;
     background-position: center;
 }
+.signUp {
+    background-image: url("../images/Sign_Up.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+}
+
+.logo1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 75px;
+    position: absolute;
+    margin-left: 15px;
+}
+
+.emailInput {
+    padding-right: 30px;
+}
 
 .inputBox {
-    /* margin-top: 11%; */
     margin-left: 25%;
     padding-top: 15px;
     padding-bottom: 15px;
+    transform: translateY(250px);
     display: flex;
     justify-content: center;
     width:50%;
-    background-color: grey;
-    opacity: 95%; 
+    opacity: 95%;
+    background-color: #ebdcb0;
   } 
 
   .submit {
       display: flex;
       justify-content: center;
       width: 50%;
-      margin-top: 10px;
+      margin-left: 80px;
   }
 
   footer ul {
-    background-color: grey;
+    /* background-color: grey; */
     display: flex;
-    transform: translateY(616px);
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
@@ -89,9 +107,8 @@ h3 {
   }
 
   footer h2 {
-    transform: translateY(600px);
     display: flex;
     justify-content: center;
     align-self: flex-end;
-    background-color: white;
+    /* background-color: grey; */
   }
