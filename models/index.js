@@ -1,5 +1,5 @@
 const Reservation = require('./Reservation');
-const User = require('./User')
+const User = require('./User');
 
 Reservation.belongsTo(User, {
     foreignKey: 'user_id'

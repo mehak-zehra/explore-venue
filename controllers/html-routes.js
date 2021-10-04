@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const e = require('express');
 const { Op } = require('sequelize')
+const sequelize = require('sequelize')
 const Venue = require('../models/Venue');
+const Reservation = require('../models/Reservation');
 
 const filterLocationsArr = [
   "Fremont",
@@ -52,6 +54,42 @@ router.get('/signup', (req, res) => {
     res.redirect('/search');
   }
   res.render('signup');
+});
+
+router.get('/reservations', (req, res) => {
+  let isLoggedIn = req.session.loggedIn;
+  if (!isLoggedIn) { // redirect to login if user is not logged in
+    res.redirect('/login');
+  }
+
+  Reservation.findAll({
+    attributes: {
+      include: [
+          [
+              sequelize.literal(`(
+                  SELECT title
+                  FROM Venue AS v
+                  WHERE
+                      v.id = reservation.venue_id
+              )`),
+              'venue_title'
+          ]
+      ]
+  },
+    where: {
+      user_id: req.session.user_id
+    },
+  })
+    .then((data) => {
+      const reservations = data.map(post => post.get({ plain: true }));
+      console.log(reservations)
+      const templateVariables = {
+        reservations: reservations,
+        isLoggedIn: isLoggedIn
+      }
+      res.render('reservation', { templateVariables });
+    })
+
 });
 
 router.get('/venue/:id/', (req, res) => {

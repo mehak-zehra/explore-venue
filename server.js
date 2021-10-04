@@ -4,6 +4,11 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const sequelize = require("./config/connection");
 
+// const MyPromise = require('some-promise-lib');
+const confetti = require('canvas-confetti');
+// confetti.Promise = MyPromise;
+
+
 //session
 const session = require('express-session');
 
