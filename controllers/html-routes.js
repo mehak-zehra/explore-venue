@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const e = require('express');
 const { Op } = require('sequelize')
+const sequelize = require('sequelize')
 const Venue = require('../models/Venue');
 const Reservation = require('../models/Reservation');
 
@@ -62,14 +63,26 @@ router.get('/reservations', (req, res) => {
   }
 
   Reservation.findAll({
+    attributes: {
+      include: [
+          [
+              sequelize.literal(`(
+                  SELECT title
+                  FROM Venue AS v
+                  WHERE
+                      v.id = reservation.venue_id
+              )`),
+              'venue_title'
+          ]
+      ]
+  },
     where: {
       user_id: req.session.user_id
     },
-    include: Venue ,
   })
     .then((data) => {
       const reservations = data.map(post => post.get({ plain: true }));
-
+      console.log(reservations)
       const templateVariables = {
         reservations: reservations,
         isLoggedIn: isLoggedIn

@@ -4,6 +4,11 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const sequelize = require("./config/connection");
 
+// const MyPromise = require('some-promise-lib');
+const confetti = require('canvas-confetti');
+// confetti.Promise = MyPromise;
+
+
 //session
 const session = require('express-session');
 
@@ -41,6 +46,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 const routes = require('./controllers/');
 app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
   });
