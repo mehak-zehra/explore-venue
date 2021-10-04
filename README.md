@@ -15,7 +15,7 @@
     I WANT to search for a venue by title or location 
     SO THAT I can view venues and their details and check if they’re available on specific date for booking an event.
 
-    ## Installation  
+ ## Installation  
   To install dependencies run this command 
 
   ```npm install```
