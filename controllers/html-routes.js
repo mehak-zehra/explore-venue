@@ -177,7 +177,8 @@ router.get('/search', (req, res) => {
           filterByCategory: filterCategoryArr,
           filterByCapacity: filterCapacityArr,
           isLoggedIn: isLoggedIn,
-          showResults: shouldShowResults
+          showResults: shouldShowResults,
+          userFirstName: req.session.firstname,
         }
         res.render('search', { templateVariables });
       })

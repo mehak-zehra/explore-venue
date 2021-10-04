@@ -1,17 +1,7 @@
 <div class="login-page">
 
   <header>
-    <nav class="homepage-nav navbar navbar-light bg-light justify-content-between">
-      <a href="/"><h1 class="logo">explore<span class="yellow-text">Venue</span></h1></a>
-      <form class="form-inline">
-        {{#if isLoggedIn}}
-        <button id="logout" class="btn btn-outline-warning">Logout</button>
-        {{else}}
-        <button type="button" class="sign-up-btn btn btn-link mr-2 btn-lg" onclick="goToSignUpPage()">Sign Up</button>
-        <button type="button" class="btn btn-outline-warning btn-lg" onclick="goToLoginPage()">Login</button>
-        {{/if}}
-      </form>
-    </nav>
+    {{> logged-out-header}}
   </header>
 
   <div class="login-container container-fluid">
@@ -32,7 +22,6 @@
       <button type="submit" id="login" class="btn btn-warning btn-lg text-white">Login</button>
     </form>
   </div>
-  {{!-- <script src="assets/js/login.js"></script> --}}
   <script src="assets/js/global.js"></script>
 </div>
 <footer>

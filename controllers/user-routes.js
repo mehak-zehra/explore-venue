@@ -33,6 +33,7 @@ router.post('/login', (req, res) => {
       req.session.save(() => {
         // declare session variables
         req.session.user_id = dbUserData.id;
+        req.session.firstname = dbUserData.first_name;
         req.session.email = dbUserData.email; // question about email? or it should be username? we dont have user name
         req.session.loggedIn = true;
   
@@ -66,6 +67,7 @@ router.post('/signup', (req, res) => {
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
+      req.session.firstname = dbUserData.first_name;
       req.session.email = dbUserData.email; // question about email? or it should be username? we dont have user name
       req.session.loggedIn = true;
 
