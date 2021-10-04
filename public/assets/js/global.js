@@ -98,28 +98,3 @@ let logoutEl = document.querySelector('#logout');
 if (logoutEl) {
     logoutEl.addEventListener('click', logout);
 }
-
-
-// confetti test
-
-// var myCanvas = document.createElement('canvas');
-// document.appendChild(myCanvas);
-
-myCanvas= document.getElementById("canvas");
-
-var myConfetti = confetti.create(myCanvas, {
-  resize: true,
-  useWorker: true
-});
-// myConfetti({
-//   particleCount: 1000,
-//   spread: 1600
-//   // any other options from the global
-//   // confetti function
-// });
-
-myConfetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
